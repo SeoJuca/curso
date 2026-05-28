@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Mercado Autônomo do Zero | Fature 24h por Dia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --verde: #1A6B3A;
+    --verde-claro: #2E9055;
+    --verde-fraco: #E8F5ED;
+    --verde-medio: #B2DCC1;
+    --preto: #0D1A12;
+    --cinza-escuro: #1E2D24;
+    --cinza: #4A5E50;
+    --cinza-claro: #8FA896;
+    --branco: #FAFCFA;
+    --amarelo: #F2C94C;
+    --radius: 16px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--preto);
+    color: var(--branco);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(13,26,18,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(46,144,85,0.2);
+  }
+  .nav-logo { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--verde-claro); }
+  .nav-cta {
+    background: var(--verde-claro); color: #fff; font-family: 'Syne', sans-serif;
+    font-size: 0.85rem; font-weight: 600; border: none; cursor: pointer;
+    padding: 0.55rem 1.25rem; border-radius: 50px; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--verde); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(46,144,85,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    max-width: 1200px; margin: 0 auto; align-items: center;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(46,144,85,0.15); border: 1px solid rgba(46,144,85,0.4);
+    color: #7FD0A0; font-size: 0.8rem; font-weight: 500;
+    padding: 0.35rem 0.9rem; border-radius: 50px; margin-bottom: 1.5rem;
+  }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #7FD0A0; }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800; color: var(--branco);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 span { color: var(--verde-claro); }
+  .hero-sub {
+    font-size: 1.1rem; color: var(--cinza-claro);
+    max-width: 480px; margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-cta-group { display: flex; flex-direction: column; gap: 0.75rem; }
+  .btn-primary {
+    display: inline-block; text-align: center;
+    background: var(--verde-claro); color: #fff;
+    font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700;
+    padding: 1.1rem 2.4rem; border-radius: 50px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: transform 0.15s, background 0.2s;
+    box-shadow: 0 8px 32px rgba(46,144,85,0.35);
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: #27a862; }
+  .btn-primary:active { transform: translateY(0); }
+  .hero-disclaimer { font-size: 0.78rem; color: var(--cinza-claro); text-align: center; }
+
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .stat-card:first-child { transform: translateX(2rem); }
+  .stat-card:last-child { transform: translateX(-1rem); }
+  .stat-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(46,144,85,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; flex-shrink: 0;
+  }
+  .stat-value { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--verde-claro); }
+  .stat-label { font-size: 0.82rem; color: var(--cinza-claro); margin-top: 2px; }
+  .stat-growth { font-size: 0.78rem; color: #7FD0A0; margin-top: 2px; }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--verde-claro);
+    margin-bottom: 1rem; display: block;
+  }
+  .section-title {
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 800; margin-bottom: 1rem;
+  }
+  .section-sub { font-size: 1.05rem; color: var(--cinza-claro); max-width: 580px; font-weight: 300; }
+
+  /* ── PROBLEMA ── */
+  .problema { background: var(--cinza-escuro); }
+  .problema-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+    align-items: center; margin-top: 3rem;
+  }
+  .dor-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .dor-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    font-size: 1rem; color: #C5D8CB;
+  }
+  .dor-x {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(226,75,74,0.2); border: 1px solid rgba(226,75,74,0.4);
+    display: flex; align-items: center; justify-content: center;
+    color: #E24B4A; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  }
+  .solucao-box {
+    background: rgba(46,144,85,0.1);
+    border: 1px solid rgba(46,144,85,0.3);
+    border-radius: var(--radius);
+    padding: 2rem;
+  }
+  .solucao-box h3 { font-size: 1.3rem; margin-bottom: 1rem; color: #7FD0A0; }
+  .solucao-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .solucao-item { display: flex; align-items: flex-start; gap: 0.7rem; font-size: 0.95rem; color: #C5D8CB; }
+  .check-icon { color: var(--verde-claro); margin-top: 3px; flex-shrink: 0; font-size: 0.9rem; }
+
+  /* ── MÓDULOS ── */
+  .modulos { background: var(--preto); }
+  .modulos-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem; margin-top: 3rem;
+  }
+  .modulo-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .modulo-card:hover { border-color: rgba(46,144,85,0.4); transform: translateY(-3px); }
+  .modulo-num {
+    font-family: 'Syne', sans-serif; font-size: 0.75rem; font-weight: 700;
+    color: var(--verde-claro); letter-spacing: 0.1em;
+    margin-bottom: 0.6rem; display: block;
+  }
+  .modulo-card h3 { font-size: 1.05rem; margin-bottom: 0.6rem; }
+  .modulo-card p { font-size: 0.88rem; color: var(--cinza-claro); line-height: 1.6; }
+  .modulo-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: rgba(46,144,85,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; margin-bottom: 1rem;
+  }
+
+  /* ── BONUS ── */
+  .bonus { background: var(--cinza-escuro); }
+  .bonus-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem; margin-top: 3rem;
+  }
+  .bonus-card {
+    background: rgba(242,201,76,0.06);
+    border: 1px solid rgba(242,201,76,0.2);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .bonus-tag {
+    display: inline-block; background: rgba(242,201,76,0.15);
+    color: var(--amarelo); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.25rem 0.7rem; border-radius: 50px;
+    margin-bottom: 0.25rem; width: fit-content;
+  }
+  .bonus-card h4 { font-size: 0.95rem; color: var(--branco); }
+  .bonus-card p { font-size: 0.82rem; color: var(--cinza-claro); }
+
+  /* ── NÚMEROS DO MERCADO ── */
+  .numeros { background: var(--verde); overflow: hidden; position: relative; }
+  .numeros::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 70%);
+  }
+  .numeros-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .numero-item { text-align: center; }
+  .numero-valor {
+    font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800;
+    color: #fff; margin-bottom: 0.4rem;
+  }
+  .numero-label { font-size: 0.88rem; color: rgba(255,255,255,0.75); }
+
+  /* ── PARA QUEM ── */
+  .para-quem { background: var(--preto); }
+  .paraquem-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem; margin-top: 3rem;
+  }
+  .pq-sim, .pq-nao {
+    border-radius: var(--radius);
+    padding: 2rem;
+  }
+  .pq-sim {
+    background: rgba(46,144,85,0.1);
+    border: 1px solid rgba(46,144,85,0.3);
+  }
+  .pq-nao {
+    background: rgba(226,75,74,0.06);
+    border: 1px solid rgba(226,75,74,0.2);
+  }
+  .pq-sim h3 { color: #7FD0A0; font-size: 1rem; margin-bottom: 1.25rem; }
+  .pq-nao h3 { color: #E24B4A; font-size: 1rem; margin-bottom: 1.25rem; }
+  .pq-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .pq-item { font-size: 0.92rem; color: #C5D8CB; display: flex; gap: 0.6rem; }
+
+  /* ── CTA MID ── */
+  .cta-mid {
+    background: linear-gradient(135deg, #0D3020 0%, #0D1A12 100%);
+    border-top: 1px solid rgba(46,144,85,0.2);
+    border-bottom: 1px solid rgba(46,144,85,0.2);
+    text-align: center;
+  }
+  .cta-mid h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); margin-bottom: 1rem; }
+  .cta-mid p { color: var(--cinza-claro); margin-bottom: 2rem; max-width: 500px; margin-inline: auto; font-weight: 300; }
+  .price-box {
+    display: inline-flex; flex-direction: column; align-items: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 2rem 3rem; margin-bottom: 2rem;
+  }
+  .price-label { font-size: 0.8rem; color: var(--cinza-claro); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+  .price-value { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; color: var(--verde-claro); }
+  .price-desc { font-size: 0.82rem; color: var(--cinza-claro); margin-top: 0.25rem; }
+
+  /* ── GARANTIA ── */
+  .garantia-strip {
+    display: flex; align-items: center; gap: 1.5rem; justify-content: center;
+    flex-wrap: wrap; margin-top: 2rem;
+  }
+  .garantia-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--cinza-claro); }
+  .gicon { font-size: 1rem; }
+
+  /* ── FAQ ── */
+  .faq { background: var(--cinza-escuro); }
+  .faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; max-width: 720px; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 1.5rem 0;
+  }
+  .faq-q {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 600; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    color: var(--branco);
+    background: none; border: none; width: 100%; text-align: left;
+  }
+  .faq-q .arrow { transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-a { font-size: 0.92rem; color: var(--cinza-claro); margin-top: 0.9rem; display: none; line-height: 1.7; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    background: var(--preto);
+    text-align: center;
+    padding: 7rem 2rem;
+    position: relative; overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(46,144,85,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .final-cta h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); margin-bottom: 1rem; }
+  .final-cta p { color: var(--cinza-claro); max-width: 520px; margin-inline: auto; margin-bottom: 2.5rem; font-weight: 300; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--cinza-escuro);
+    padding: 2rem;
+    text-align: center;
+    font-size: 0.78rem; color: var(--cinza-claro);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ── PULSE ANIMATION ── */
+  @keyframes pulse { 0%,100%{box-shadow:0 8px 32px rgba(46,144,85,0.35)} 50%{box-shadow:0 12px 48px rgba(46,144,85,0.6)} }
+  .btn-primary { animation: pulse 3s ease-in-out infinite; }
+  .btn-primary:hover { animation: none; }
+
+  /* ── FADE IN ── */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+  .hero-text { animation: fadeUp 0.7s ease both; }
+  .hero-visual { animation: fadeUp 0.7s 0.2s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-grid, .problema-grid, .paraquem-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-visual { order: -1; }
+    .stat-card:first-child { transform: none; }
+    .stat-card:last-child { transform: none; }
+    nav { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">🛒 Mini Mercado Pro</span>
+  <a href="#cta" class="nav-cta">Quero Começar →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid container">
+
+    <div class="hero-text">
+      <div class="badge"><span class="badge-dot"></span> Curso completo disponível na Hotmart</div>
+      <h1>
+        Monte seu<br>
+        <span>Mini Mercado Autônomo</span><br>
+        do Zero
+      </h1>
+      <p class="hero-sub">
+        Aprenda a montar, operar e escalar um minimercado que fatura 24h por dia, 7 dias por semana — sem precisar estar presente e sem pagar franquia.
+      </p>
+      <div class="hero-cta-group">
+        <a href="SUA_URL_HOTMART" id="cta" target="_blank" class="btn-primary">
+          🚀 Quero Acessar o Curso Agora
+        </a>
+        <span class="hero-disclaimer">✓ Acesso imediato · ✓ Material completo · ✓ Sem mensalidade</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="stat-card">
+        <div class="stat-icon">📈</div>
+        <div>
+          <div class="stat-value">53,5%</div>
+          <div class="stat-label">Crescimento do setor em 2024</div>
+          <div class="stat-growth">↑ enquanto supermercados caíram 10,1% (APAS)</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💰</div>
+        <div>
+          <div class="stat-value">R$ 2 bi</div>
+          <div class="stat-label">Movimentados por ano no Brasil</div>
+          <div class="stat-growth">↑ +10 mil unidades ativas e crescendo</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⏱️</div>
+        <div>
+          <div class="stat-value">6–8h</div>
+          <div class="stat-label">Por semana para operar</div>
+          <div class="stat-growth">↑ Margem líquida entre 10% e 40%</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="problema">
+  <div class="container">
+    <div class="problema-grid">
+      <div>
+        <span class="section-label">O Problema</span>
+        <h2 class="section-title">Você quer sair do modelo tradicional, mas não sabe por onde começar</h2>
+        <ul class="dor-list">
+          <li class="dor-item"><span class="dor-x">✕</span> Franquias exigem R$ 200k+ e ainda cobram royalties todos os meses</li>
+          <li class="dor-item"><span class="dor-x">✕</span> Não sabe onde instalar, qual equipamento comprar ou como precificar</li>
+          <li class="dor-item"><span class="dor-x">✕</span> Medo de investir errado e perder dinheiro no primeiro ponto</li>
+          <li class="dor-item"><span class="dor-x">✕</span> Não entende como funciona a tecnologia, contratos e partes legais</li>
+          <li class="dor-item"><span class="dor-x">✕</span> Conteúdo gratuito é raso demais para colocar em prática de verdade</li>
+        </ul>
+      </div>
+      <div>
+        <div class="solucao-box">
+          <h3>✅ A solução que você estava esperando</h3>
+          <ul class="solucao-list">
+            <li class="solucao-item"><span class="check-icon">✓</span> Método completo do zero: da prospecção do ponto até a operação diária</li>
+            <li class="solucao-item"><span class="check-icon">✓</span> Sem precisar pagar franquia — você opera com sua própria marca</li>
+            <li class="solucao-item"><span class="check-icon">✓</span> Business Plan pronto com projeções financeiras reais</li>
+            <li class="solucao-item"><span class="check-icon">✓</span> Planilha de DRE inclusa para controlar seu resultado mês a mês</li>
+            <li class="solucao-item"><span class="check-icon">✓</span> Guia de como negociar com condomínios e fechar contratos seguros</li>
+            <li class="solucao-item"><span class="check-icon">✓</span> Curva ABC com os 10 produtos mais vendidos em mais de 56 pontos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section class="modulos">
+  <div class="container">
+    <span class="section-label">O que você vai aprender</span>
+    <h2 class="section-title">Conteúdo completo, do planejamento à operação</h2>
+    <p class="section-sub">Cada aula foi criada com base em operações reais. Nada de teoria genérica.</p>
+
+    <div class="modulos-grid">
+
+      <div class="modulo-card">
+        <div class="modulo-icon">🗺️</div>
+        <span class="modulo-num">AULA 1</span>
+        <h3>O Mercado e a Oportunidade</h3>
+        <p>Entenda por que o minimercado autônomo cresce 53% ao ano e como entrar no segmento certo para o seu perfil e capital.</p>
+      </div>
+
+      <div class="modulo-card">
+        <div class="modulo-icon">📊</div>
+        <span class="modulo-num">AULA 2</span>
+        <h3>Business Plan Completo</h3>
+        <p>Monte seu plano de negócio com investimento inicial (R$25k–100k), projeção de faturamento e estimativa de payback de 10 a 26 meses.</p>
+      </div>
+
+      <div class="modulo-card">
+        <div class="modulo-icon">🏗️</div>
+        <span class="modulo-num">AULA 3</span>
+        <h3>Projeto Arquitetônico</h3>
+        <p>Planta de gondolas, infraestrutura elétrica, posicionamento de câmeras, layout que aumenta o ticket médio e reduz furtos.</p>
+      </div>
+
+      <div class="modulo-card">
+        <div class="modulo-icon">🏢</div>
+        <span class="modulo-num">AULA 4</span>
+        <h3>Prospecção e Contratos</h3>
+        <p>Como encontrar e negociar com síndicos, montar proposta comercial e assinar contratos que protegem o seu investimento.</p>
+      </div>
+
+      <div class="modulo-card">
+        <div class="modulo-icon">✅</div>
+        <span class="modulo-num">AULA 5</span>
+        <h3>Check-list de Estruturação</h3>
+        <p>Passo a passo completo da implantação: análise técnica do espaço, planejamento elétrico, montagem e configuração do sistema.</p>
+      </div>
+
+      <div class="modulo-card">
+        <div class="modulo-icon">🔄</div>
+        <span class="modulo-num">AULA 6</span>
+        <h3>Reabastecimento e Operação</h3>
+        <p>Fluxo operacional semanal, método FIFO, como comprar no atacado de forma estratégica e evitar ruptura de estoque.</p>
+      </div>
+
+      <div class="modulo-card">
+        <div class="modulo-icon">📉</div>
+        <span class="modulo-num">AULA 7</span>
+        <h3>DRE e Indicadores Financeiros</h3>
+        <p>Controle de CMV, margem líquida, ticket médio, taxa de ruptura e fluxo de caixa. Planilha de DRE inclusa no curso.</p>
+      </div>
+
+      <div class="modulo-card">
+        <div class="modulo-icon">🧹</div>
+        <span class="modulo-num">AULA 8</span>
+        <h3>Limpeza e Rotina Operacional</h3>
+        <p>Protocolo de limpeza semanal, organização de prateleiras e como identificar produtos com baixo giro antes de perder dinheiro.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NÚMEROS DO MERCADO -->
+<section class="numeros">
+  <div class="container" style="position:relative;">
+    <span class="section-label" style="color:rgba(255,255,255,0.7)">O Mercado em Números</span>
+    <h2 class="section-title" style="color:#fff; max-width:600px;">O segmento que mais cresce no varejo brasileiro</h2>
+    <div class="numeros-grid">
+      <div class="numero-item">
+        <div class="numero-valor">53,5%</div>
+        <div class="numero-label">Crescimento do setor em 2024 (APAS)</div>
+      </div>
+      <div class="numero-item">
+        <div class="numero-valor">10 mil</div>
+        <div class="numero-label">Unidades ativas no Brasil</div>
+      </div>
+      <div class="numero-item">
+        <div class="numero-valor">R$ 2bi</div>
+        <div class="numero-label">Movimentados por ano no segmento</div>
+      </div>
+      <div class="numero-item">
+        <div class="numero-valor">60%</div>
+        <div class="numero-label">Dos brasileiros preferem lojas com automação (PwC)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BÔNUS -->
+<section class="bonus">
+  <div class="container">
+    <span class="section-label">Bônus Exclusivos</span>
+    <h2 class="section-title">Materiais extras que valem o curso sozinhos</h2>
+    <div class="bonus-grid">
+
+      <div class="bonus-card">
+        <span class="bonus-tag">Bônus 1</span>
+        <h4>Guia Definitivo de Minimercado Autônomo</h4>
+        <p>E-book de 29 páginas com tudo sobre o modelo: tecnologia, fornecedores, marketing, gestão financeira e indicadores de sucesso.</p>
+      </div>
+
+      <div class="bonus-card">
+        <span class="bonus-tag">Bônus 2</span>
+        <h4>Guia Completo de Condomínios</h4>
+        <p>Como prospectar, abordar síndicos, montar proposta comercial e fechar contratos com cláusulas de exclusividade.</p>
+      </div>
+
+      <div class="bonus-card">
+        <span class="bonus-tag">Bônus 3</span>
+        <h4>Planilha DRE do Minimercado</h4>
+        <p>Planilha em Excel para controlar CMV, margem líquida, custos fixos e variáveis e ver o resultado real da sua operação todo mês.</p>
+      </div>
+
+      <div class="bonus-card">
+        <span class="bonus-tag">Bônus 4</span>
+        <h4>Curva ABC + Top 10 Produtos</h4>
+        <p>Os 10 produtos mais vendidos de uma base com 56 pontos e mais de R$500k/mês de faturamento. Comece com o mix certo.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section class="para-quem">
+  <div class="container">
+    <span class="section-label">Para quem é esse curso</span>
+    <h2 class="section-title">Esse curso foi feito para você que...</h2>
+    <div class="paraquem-grid">
+      <div class="pq-sim">
+        <h3>✅ É para você se...</h3>
+        <ul class="pq-list">
+          <li class="pq-item"><span>✓</span> Quer criar uma fonte de renda passiva sem depender de patrão</li>
+          <li class="pq-item"><span>✓</span> Não tem capital para uma franquia e busca alternativa mais acessível</li>
+          <li class="pq-item"><span>✓</span> Já tem interesse no mercado mas não sabe como começar</li>
+          <li class="pq-item"><span>✓</span> Quer um negócio que funcione mesmo sem você presente todos os dias</li>
+          <li class="pq-item"><span>✓</span> Busca escalar — operar 2, 3 ou mais unidades com poucas horas por semana</li>
+        </ul>
+      </div>
+      <div class="pq-nao">
+        <h3>❌ Não é para você se...</h3>
+        <ul class="pq-list">
+          <li class="pq-item"><span>✕</span> Quer resultado sem nenhum esforço ou aprendizado inicial</li>
+          <li class="pq-item"><span>✕</span> Busca apenas conteúdo gratuito e não está disposto a investir no negócio</li>
+          <li class="pq-item"><span>✕</span> Não pretende aplicar o que aprender na prática</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA PRINCIPAL -->
+<section class="cta-mid" id="preco">
+  <div class="container">
+    <h2 class="section-title">Comece hoje mesmo</h2>
+    <p>Acesso completo ao curso + todos os bônus. Sem mensalidade, sem franquia, sem pegadinha.</p>
+
+    <div class="price-box">
+      <span class="price-label">Investimento único</span>
+      <span class="price-value">R$ ---</span>
+      <span class="price-desc">ou em até X× sem juros</span>
+    </div>
+
+    <br>
+    <a href="SUA_URL_HOTMART" target="_blank" class="btn-primary" style="font-size:1.15rem; padding:1.25rem 3rem;">
+      🛒 Quero Garantir Meu Acesso Agora
+    </a>
+
+    <div class="garantia-strip">
+      <div class="garantia-item"><span class="gicon">🔒</span> Pagamento 100% seguro via Hotmart</div>
+      <div class="garantia-item"><span class="gicon">⚡</span> Acesso liberado imediatamente</div>
+      <div class="garantia-item"><span class="gicon">📱</span> Acesse em qualquer dispositivo</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <span class="section-label">Dúvidas Frequentes</span>
+    <h2 class="section-title">Ainda tem perguntas?</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Preciso ter experiência com varejo para fazer o curso?
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Não. O curso foi criado para quem está começando do zero. Todo o conteúdo é estruturado do básico ao avançado, com materiais práticos como planilhas, checklist e guias que você pode aplicar imediatamente.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Qual é o investimento mínimo para montar um minimercado?
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">O Business Plan do curso mostra que é possível começar a partir de R$ 25.000 em um modelo mais compacto, chegando até R$ 100.000 para operações maiores. O payback estimado varia entre 10 e 26 meses dependendo do ponto e da operação.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Quanto tempo por semana preciso dedicar ao negócio?
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Uma operação bem estruturada exige entre 6 e 8 horas semanais do operador, distribuídas entre verificação do dashboard (15–20 min/dia), reposição (1 a 3x por semana) e análise financeira semanal. Você não precisa estar no local todos os dias.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Preciso pagar royalties ou fazer parte de uma franquia?
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Não. Esse curso ensina você a montar um minimercado independente, com sua própria marca e identidade. Você não paga royalties para ninguém. O objetivo é exatamente esse: entrar no segmento sem precisar de franqueadora.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Posso instalar em locais além de condomínios?
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">Sim. O curso cobre vários segmentos: condomínios residenciais, prédios comerciais, academias, hospitais, clínicas e hotéis — cada um com sua dinâmica e potencial de ticket médio diferente.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Por quanto tempo terei acesso ao conteúdo?
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a">O acesso é disponibilizado pela plataforma Hotmart. Após a compra, o acesso ao conteúdo é imediato e você pode assistir no seu ritmo, no computador, celular ou tablet.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container" style="position:relative;">
+    <h2 class="section-title">O mercado está crescendo.<br>A pergunta é: você vai fazer parte disso?</h2>
+    <p>O setor de minimercados autônomos cresce a dois dígitos todo ano. Quem entra agora, com o método certo, sai na frente.</p>
+    <a href="SUA_URL_HOTMART" target="_blank" class="btn-primary" style="font-size:1.15rem; padding:1.25rem 3rem;">
+      🚀 Começar Agora — Acesso Imediato
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Mini Mercado Autônomo do Zero · Curso disponível na plataforma Hotmart</p>
+  <p style="margin-top:0.5rem">Este produto é vendido com a intermediação da Hotmart. A marca Hotmart é de propriedade da Hotmart Company.</p>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  var item = btn.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(el){ el.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
+}
+
+// Smooth scroll para links internos
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var target = document.querySelector(this.getAttribute('href'));
+    if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+</script>
+
+</body>
+</html>
