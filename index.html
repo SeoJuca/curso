@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curso Mini Mercado Autônomo | Entenda o Negócio Antes de Investir</title>
+<title>Guia Completo para Montar o Seu Mini Mercado e Começar a Faturar 24h</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -16,350 +16,313 @@
   --verde-muted: #aabcaa;
   --verde-bg: #f1fff0;
   --verde-bg2: #f9fff8;
-  --verde-light: #e4f5e4;
+  --verde-light: #daf0da;
   --preto: #0d1a0f;
   --cinza: #4a5e4d;
   --cinza-claro: #7a8f7c;
   --branco: #ffffff;
+  --amarelo: #F2C94C;
+  --amarelo-bg: #FFF8DC;
   --radius: 20px;
   --radius-sm: 10px;
   --font: 'Plus Jakarta Sans', sans-serif;
+  --link: https://hotm.io/ASkqwik?utm_source=lp&utm_medium=cta&utm_campaign=curso-minimercado;
 }
 
 html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--font);
-  background: var(--branco);
-  color: var(--preto);
-  line-height: 1.65;
-  overflow-x: hidden;
-}
+body { font-family: var(--font); background: var(--branco); color: var(--preto); line-height: 1.65; overflow-x: hidden; }
 
 /* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 1rem 2.5rem;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.94); backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(0,98,40,0.1);
 }
-.nav-logo {
-  font-size: 1rem; font-weight: 700; color: var(--verde);
-  letter-spacing: -0.01em;
-}
+.nav-logo { font-size: 0.88rem; font-weight: 700; color: var(--verde); max-width: 320px; line-height: 1.3; }
 .nav-cta {
   background: var(--verde); color: #fff;
-  font-family: var(--font); font-size: 0.85rem; font-weight: 600;
-  padding: 0.55rem 1.4rem; border-radius: 50px;
-  text-decoration: none; transition: background 0.2s;
+  font-family: var(--font); font-size: 0.82rem; font-weight: 700;
+  padding: 0.6rem 1.4rem; border-radius: 50px;
+  text-decoration: none; white-space: nowrap; transition: background 0.2s;
 }
 .nav-cta:hover { background: var(--verde-dark); }
 
 /* ── HERO ── */
 .hero {
   background: var(--verde-dark);
-  padding: 9rem 2rem 6rem;
-  position: relative; overflow: hidden;
+  padding: 9rem 2rem 6rem; position: relative; overflow: hidden;
 }
 .hero-pattern {
   position: absolute; inset: 0; opacity: 0.07;
-  background-image:
-    repeating-linear-gradient(60deg, #4fc14b 0, #4fc14b 1px, transparent 0, transparent 50%),
-    repeating-linear-gradient(120deg, #4fc14b 0, #4fc14b 1px, transparent 0, transparent 50%);
+  background-image: repeating-linear-gradient(60deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%), repeating-linear-gradient(120deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%);
   background-size: 40px 70px;
 }
-.hero-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center;
-  position: relative;
-}
-.hero-badge {
+.hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4rem; align-items: center; position: relative; }
+.hero-eyebrow {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  background: rgba(79,193,75,0.15); border: 1px solid rgba(79,193,75,0.35);
-  color: #7FD080; font-size: 0.78rem; font-weight: 600;
-  padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem;
-  letter-spacing: 0.04em;
+  background: rgba(79,193,75,0.15); border: 1px solid rgba(79,193,75,0.3);
+  color: #88d984; font-size: 0.78rem; font-weight: 600;
+  padding: 0.38rem 1rem; border-radius: 50px; margin-bottom: 1.5rem;
+  letter-spacing: 0.03em;
 }
 .hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-  font-weight: 800; color: #fff;
-  line-height: 1.12; margin-bottom: 1.4rem;
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4.2vw, 3.3rem); font-weight: 800; color: #fff;
+  line-height: 1.12; margin-bottom: 1.1rem; letter-spacing: -0.025em;
 }
 .hero h1 em { color: var(--verde-vivo); font-style: normal; }
-.hero-sub {
-  font-size: 1.05rem; color: rgba(255,255,255,0.65);
-  font-weight: 300; max-width: 460px; margin-bottom: 2.5rem;
+.hero-quem {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm); padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
 }
+.hero-quem-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--verde-vivo); flex-shrink: 0; }
+.hero-quem p { font-size: 0.83rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+.hero-quem strong { color: rgba(255,255,255,0.9); }
+.hero-sub { font-size: 1rem; color: rgba(255,255,255,0.55); font-weight: 300; max-width: 460px; margin-bottom: 2.5rem; }
+.hero-cta-stack { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+
 .btn-primary {
   display: inline-block; text-align: center;
   background: var(--verde-vivo); color: #fff;
-  font-family: var(--font); font-size: 1.05rem; font-weight: 700;
-  padding: 1.1rem 2.5rem; border-radius: 50px;
+  font-family: var(--font); font-size: 1.05rem; font-weight: 800;
+  padding: 1.1rem 2.4rem; border-radius: 50px;
   text-decoration: none; border: none; cursor: pointer;
   transition: transform 0.15s, background 0.2s;
 }
 .btn-primary:hover { transform: translateY(-2px); background: #3daa39; }
-.hero-note { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 0.75rem; }
+.hero-note { font-size: 0.76rem; color: rgba(255,255,255,0.35); }
 
-/* HERO RIGHT — Stat Cards */
+/* Hero right */
 .hero-cards { display: flex; flex-direction: column; gap: 1rem; }
 .hcard {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius);
-  padding: 1.25rem 1.5rem;
-  display: flex; align-items: center; gap: 1.1rem;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius); padding: 1.1rem 1.4rem;
+  display: flex; align-items: center; gap: 1rem;
 }
 .hcard:nth-child(2) { transform: translateX(1.5rem); }
-.hcard-icon {
-  width: 46px; height: 46px; border-radius: 14px;
-  background: rgba(79,193,75,0.18);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem; flex-shrink: 0;
+.hcard-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(79,193,75,0.18); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+.hcard-val { font-size: 1.45rem; font-weight: 800; color: var(--verde-vivo); letter-spacing: -0.02em; }
+.hcard-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+.hcard-sub { font-size: 0.7rem; color: rgba(79,193,75,0.65); margin-top: 1px; }
+
+/* ── VALOR ── (ancoragem de preço) */
+.valor {
+  background: var(--verde-bg2);
+  border-bottom: 2px solid var(--verde-light);
 }
-.hcard-val { font-size: 1.5rem; font-weight: 800; color: var(--verde-vivo); letter-spacing: -0.02em; }
-.hcard-lbl { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
-.hcard-sub { font-size: 0.72rem; color: rgba(79,193,75,0.7); margin-top: 1px; }
+.valor-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.valor-text h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; }
+.valor-text h2 em { color: var(--verde); font-style: normal; }
+.valor-text p { color: var(--cinza); font-size: 0.97rem; margin-bottom: 0.85rem; line-height: 1.7; }
+.valor-box {
+  background: var(--verde-dark); border-radius: var(--radius); padding: 2.5rem;
+  text-align: center; position: relative; overflow: hidden;
+}
+.valor-box::before {
+  content: ''; position: absolute; inset: 0; opacity: 0.08;
+  background-image: repeating-linear-gradient(60deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%), repeating-linear-gradient(120deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%);
+  background-size: 40px 70px;
+}
+.valor-box-inner { position: relative; }
+.vb-old { font-size: 0.85rem; color: rgba(255,255,255,0.35); text-decoration: line-through; margin-bottom: 0.25rem; }
+.vb-price { font-size: 3.2rem; font-weight: 800; color: var(--verde-vivo); letter-spacing: -0.03em; line-height: 1; margin: 0.3rem 0; }
+.vb-or { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin: 0.5rem 0; }
+.vb-parcel { font-size: 1rem; color: rgba(255,255,255,0.65); font-weight: 500; }
+.vb-note { font-size: 0.73rem; color: rgba(255,255,255,0.25); margin-top: 0.5rem; }
+.vb-cta { margin-top: 1.75rem; width: 100%; display: block; }
 
 /* ── SECTIONS ── */
 section { padding: 6rem 2rem; }
 .container { max-width: 1100px; margin: 0 auto; }
 .section-pill {
-  display: inline-block;
-  background: var(--verde-light); color: var(--verde);
-  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
-  text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px;
-  margin-bottom: 1.25rem;
+  display: inline-block; background: var(--verde-light); color: var(--verde);
+  font-size: 0.73rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.25rem;
 }
-.section-title {
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  font-weight: 800; letter-spacing: -0.02em;
-  line-height: 1.15; margin-bottom: 1rem;
-}
-.section-sub { font-size: 1rem; color: var(--cinza); max-width: 560px; font-weight: 400; }
+.section-title { font-size: clamp(1.7rem, 3.2vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; }
+.section-sub { font-size: 0.97rem; color: var(--cinza); max-width: 560px; }
 
-/* ── PARA QUEM ── */
-.para-quem { background: var(--verde-bg2); }
-.pq-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.25rem; margin-top: 3rem;
+/* ── CREDIBILIDADE ── */
+.credibilidade { background: var(--verde); position: relative; overflow: hidden; }
+.cred-pattern { position: absolute; inset: 0; opacity: 0.07; background-image: repeating-linear-gradient(60deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%), repeating-linear-gradient(120deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%); background-size: 40px 70px; }
+.cred-inner { position: relative; }
+.cred-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+.cred-item { text-align: center; }
+.cred-val { font-size: 2.8rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; }
+.cred-val span { color: var(--verde-vivo); }
+.cred-lbl { font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 0.4rem; }
+.cred-quote {
+  margin-top: 3.5rem; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  border-left: 4px solid var(--verde-vivo);
+  border-radius: var(--radius-sm); padding: 1.75rem 2rem;
+  font-size: 1.05rem; color: rgba(255,255,255,0.8); line-height: 1.7; font-style: italic;
 }
-.pq-card {
-  background: var(--branco); border-radius: var(--radius);
-  border: 1px solid var(--verde-light);
-  padding: 1.75rem;
-  transition: border-color 0.2s, transform 0.2s;
-}
-.pq-card:hover { border-color: var(--verde-vivo); transform: translateY(-4px); }
-.pq-card-icon {
-  width: 48px; height: 48px; border-radius: 14px;
-  background: var(--verde-light);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem; margin-bottom: 1rem;
-}
-.pq-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--preto); }
-.pq-card p { font-size: 0.88rem; color: var(--cinza); line-height: 1.6; }
+.cred-quote strong { color: #fff; font-style: normal; }
 
-/* ── O QUE VOCÊ VAI APRENDER ── */
-.aprender { background: var(--branco); }
-.mod-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 1rem; margin-top: 3rem;
-}
-.mod-card {
-  border: 1.5px solid var(--verde-light);
-  border-radius: var(--radius);
-  padding: 1.75rem;
+/* ── AULAS ── */
+.aulas { background: var(--branco); }
+.aulas-grid { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 3rem; }
+.aula-row {
+  border: 1.5px solid var(--verde-light); border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  display: flex; align-items: flex-start; gap: 1.25rem;
   transition: border-color 0.2s, background 0.2s;
-  display: flex; flex-direction: column; gap: 0.5rem;
 }
-.mod-card:hover { border-color: var(--verde-vivo); background: var(--verde-bg2); }
-.mod-num {
-  font-size: 0.72rem; font-weight: 700; color: var(--verde);
-  letter-spacing: 0.1em; text-transform: uppercase;
+.aula-row:hover { border-color: var(--verde-vivo); background: var(--verde-bg2); }
+.aula-num {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: var(--verde-light); color: var(--verde);
+  font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
 }
-.mod-card h3 { font-size: 1rem; font-weight: 700; color: var(--preto); }
-.mod-card p { font-size: 0.86rem; color: var(--cinza); line-height: 1.65; }
-.mod-icon { font-size: 1.4rem; margin-bottom: 0.25rem; }
-
-/* ── NÚMEROS ── */
-.numeros {
-  background: var(--verde);
-  position: relative; overflow: hidden;
+.aula-content { flex: 1; }
+.aula-title { font-size: 0.97rem; font-weight: 700; color: var(--preto); margin-bottom: 0.3rem; }
+.aula-desc { font-size: 0.83rem; color: var(--cinza); line-height: 1.6; }
+.aula-material {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 0.6rem;
+  background: var(--amarelo-bg); border: 1px solid rgba(242,201,76,0.4);
+  color: #7A5C00; font-size: 0.72rem; font-weight: 700;
+  padding: 0.25rem 0.7rem; border-radius: 50px;
 }
-.numeros-pattern {
-  position: absolute; inset: 0; opacity: 0.08;
-  background-image:
-    repeating-linear-gradient(60deg, #4fc14b 0, #4fc14b 1px, transparent 0, transparent 50%),
-    repeating-linear-gradient(120deg, #4fc14b 0, #4fc14b 1px, transparent 0, transparent 50%);
-  background-size: 40px 70px;
-}
-.numeros-inner { position: relative; }
-.num-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2.5rem; margin-top: 3rem;
-}
-.num-item { text-align: center; }
-.num-val {
-  font-size: 3rem; font-weight: 800; color: #fff;
-  letter-spacing: -0.03em; margin-bottom: 0.4rem;
-}
-.num-val span { color: var(--verde-vivo); }
-.num-lbl { font-size: 0.88rem; color: rgba(255,255,255,0.6); }
 
 /* ── BÔNUS ── */
 .bonus { background: var(--verde-bg2); }
-.bonus-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.1rem; margin-top: 3rem;
+.bonus-destaque {
+  background: var(--verde-dark); border-radius: var(--radius);
+  padding: 2.5rem; margin-top: 3rem; margin-bottom: 1.25rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+  position: relative; overflow: hidden;
 }
-.bonus-card {
-  background: var(--branco); border-radius: var(--radius);
-  border: 1.5px solid var(--verde-light);
-  padding: 1.6rem; display: flex; flex-direction: column; gap: 0.6rem;
-}
-.bonus-tag {
-  display: inline-block;
-  background: #FFF5D6; color: #8C6A00;
-  font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 0.25rem 0.75rem; border-radius: 50px; width: fit-content;
-}
-.bonus-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--preto); }
-.bonus-card p { font-size: 0.83rem; color: var(--cinza); }
-
-/* ── COMO FUNCIONA ── */
-.como { background: var(--branco); }
-.steps {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 0; margin-top: 3rem;
-}
-.step {
-  padding: 2rem 1.5rem; text-align: center; position: relative;
-}
-.step:not(:last-child)::after {
-  content: '→'; position: absolute; right: -10px; top: 50%;
-  transform: translateY(-50%); color: var(--verde-muted);
-  font-size: 1.5rem; z-index: 1;
-}
-.step-num {
-  width: 52px; height: 52px; border-radius: 50%;
-  background: var(--verde-light); color: var(--verde);
-  font-size: 1.2rem; font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 1rem;
-}
-.step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
-.step p { font-size: 0.83rem; color: var(--cinza); }
-
-/* ── CTA MID ── */
-.cta-mid {
-  background: var(--verde-dark);
-  text-align: center; position: relative; overflow: hidden;
-}
-.cta-mid-pattern {
-  position: absolute; inset: 0; opacity: 0.06;
-  background-image:
-    repeating-linear-gradient(60deg, #4fc14b 0, #4fc14b 1px, transparent 0, transparent 50%),
-    repeating-linear-gradient(120deg, #4fc14b 0, #4fc14b 1px, transparent 0, transparent 50%);
+.bonus-destaque::before {
+  content: ''; position: absolute; inset: 0; opacity: 0.07;
+  background-image: repeating-linear-gradient(60deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%), repeating-linear-gradient(120deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%);
   background-size: 40px 70px;
 }
-.cta-mid .container { position: relative; }
-.cta-mid h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: #fff; margin-bottom: 1rem; letter-spacing: -0.02em; }
-.cta-mid p { color: rgba(255,255,255,0.55); max-width: 500px; margin-inline: auto; margin-bottom: 2.5rem; font-weight: 300; }
+.bonus-destaque-text { position: relative; }
+.bonus-destaque-tag {
+  display: inline-block; background: rgba(242,201,76,0.2); color: var(--amarelo);
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.3rem 0.8rem; border-radius: 50px; margin-bottom: 1rem;
+}
+.bonus-destaque h3 { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 1rem; line-height: 1.25; }
+.bonus-destaque p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+.bonus-destaque-stats { position: relative; display: flex; flex-direction: column; gap: 1rem; }
+.bd-stat {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm); padding: 1rem 1.25rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.bd-stat-icon { font-size: 1.4rem; flex-shrink: 0; }
+.bd-stat-val { font-size: 1.1rem; font-weight: 800; color: var(--verde-vivo); }
+.bd-stat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
 
-.price-wrap {
+.bonus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+.bonus-card {
+  background: var(--branco); border-radius: var(--radius);
+  border: 1.5px solid var(--verde-light); padding: 1.5rem;
+  display: flex; flex-direction: column; gap: 0.6rem;
+  transition: border-color 0.2s;
+}
+.bonus-card:hover { border-color: var(--verde-vivo); }
+.bonus-tag {
+  display: inline-block; background: var(--amarelo-bg); color: #7A5C00;
+  font-size: 0.69rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.25rem 0.75rem; border-radius: 50px; width: fit-content;
+}
+.bonus-card h4 { font-size: 0.93rem; font-weight: 700; color: var(--preto); }
+.bonus-card p { font-size: 0.82rem; color: var(--cinza); line-height: 1.65; }
+
+/* ── PARA QUEM ── */
+.para-quem { background: var(--branco); }
+.pq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.1rem; margin-top: 3rem; }
+.pq-card {
+  background: var(--verde-bg2); border: 1.5px solid var(--verde-light);
+  border-radius: var(--radius); padding: 1.6rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.pq-card:hover { border-color: var(--verde-vivo); transform: translateY(-3px); }
+.pq-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+.pq-card h3 { font-size: 0.93rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--preto); }
+.pq-card p { font-size: 0.83rem; color: var(--cinza); line-height: 1.6; }
+
+/* ── PRÓXIMO NÍVEL ── */
+.proximo { background: var(--verde-bg2); border-top: 1px solid var(--verde-light); }
+.proximo-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.proximo-text h2 { margin-bottom: 1rem; }
+.proximo-text p { color: var(--cinza); font-size: 0.95rem; margin-bottom: 0.85rem; line-height: 1.7; }
+.proximo-box { background: var(--verde); border-radius: var(--radius); padding: 2.5rem; color: #fff; }
+.proximo-box h3 { font-size: 1rem; margin-bottom: 1.25rem; color: var(--verde-vivo); font-weight: 700; }
+.prox-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.prox-item { display: flex; gap: 0.65rem; font-size: 0.88rem; color: rgba(255,255,255,0.7); }
+.prox-check { color: var(--verde-vivo); flex-shrink: 0; margin-top: 3px; font-weight: 700; }
+
+/* ── CTA ── */
+.cta-section { background: var(--verde-dark); text-align: center; position: relative; overflow: hidden; }
+.cta-section-p { position: absolute; inset: 0; opacity: 0.06; background-image: repeating-linear-gradient(60deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%), repeating-linear-gradient(120deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%); background-size: 40px 70px; }
+.cta-section .container { position: relative; }
+.cta-section h2 { font-size: clamp(1.8rem, 3.5vw, 2.7rem); color: #fff; margin-bottom: 1rem; letter-spacing: -0.02em; }
+.cta-section .sub { color: rgba(255,255,255,0.5); max-width: 540px; margin-inline: auto; margin-bottom: 2.5rem; font-size: 0.97rem; font-weight: 300; }
+.price-box {
   display: inline-flex; flex-direction: column; align-items: center;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius);
-  padding: 2rem 3rem; margin-bottom: 2.5rem;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius); padding: 2rem 3rem; margin-bottom: 2rem;
 }
-.price-label { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+.price-old { font-size: 0.85rem; color: rgba(255,255,255,0.3); text-decoration: line-through; }
 .price-val { font-size: 3rem; font-weight: 800; color: var(--verde-vivo); letter-spacing: -0.03em; }
-.price-desc { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-top: 0.25rem; }
-
-.garantias {
-  display: flex; align-items: center; justify-content: center;
-  gap: 2rem; flex-wrap: wrap; margin-top: 1.75rem;
-}
-.garantia { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.4); }
-
-/* ── PRÓXIMO PASSO ── */
-.proximo {
-  background: var(--verde-bg);
-  border-top: 1px solid var(--verde-light);
-}
-.proximo-inner {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-}
-.proximo-text h2 { color: var(--preto); margin-bottom: 1rem; }
-.proximo-text p { color: var(--cinza); margin-bottom: 1.5rem; font-size: 0.95rem; }
-.proximo-box {
-  background: var(--verde); border-radius: var(--radius);
-  padding: 2.5rem; color: #fff;
-}
-.proximo-box h3 { font-size: 1.1rem; margin-bottom: 1rem; color: var(--verde-vivo); }
-.prox-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-.prox-item { display: flex; gap: 0.7rem; font-size: 0.9rem; color: rgba(255,255,255,0.75); }
-.prox-check { color: var(--verde-vivo); flex-shrink: 0; margin-top: 2px; }
+.price-or { font-size: 0.75rem; color: rgba(255,255,255,0.25); margin: 0.3rem 0; }
+.price-parc { font-size: 0.95rem; color: rgba(255,255,255,0.5); }
+.price-note { font-size: 0.7rem; color: rgba(255,255,255,0.2); margin-top: 0.3rem; }
+.gtags { display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.gtag { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: rgba(255,255,255,0.35); }
 
 /* ── FAQ ── */
-.faq { background: var(--branco); }
+.faq { background: var(--verde-bg2); }
 .faq-wrap { max-width: 720px; margin-top: 3rem; }
 .faq-item { border-bottom: 1px solid var(--verde-light); }
 .faq-q {
   background: none; border: none; width: 100%; text-align: left;
   display: flex; justify-content: space-between; align-items: center; gap: 1rem;
   padding: 1.4rem 0; cursor: pointer;
-  font-family: var(--font); font-size: 0.97rem; font-weight: 700; color: var(--preto);
+  font-family: var(--font); font-size: 0.95rem; font-weight: 700; color: var(--preto);
 }
 .faq-q .arr { transition: transform 0.2s; flex-shrink: 0; color: var(--verde); }
 .faq-item.open .arr { transform: rotate(180deg); }
-.faq-a { font-size: 0.9rem; color: var(--cinza); padding-bottom: 1.4rem; display: none; line-height: 1.7; }
+.faq-a { font-size: 0.88rem; color: var(--cinza); padding-bottom: 1.4rem; display: none; line-height: 1.75; }
 .faq-item.open .faq-a { display: block; }
 
-/* ── FINAL CTA ── */
-.final {
-  background: var(--verde-dark);
-  text-align: center; position: relative; overflow: hidden;
-}
-.final-pattern {
-  position: absolute; inset: 0; opacity: 0.06;
-  background-image:
-    repeating-linear-gradient(60deg, #4fc14b 0, #4fc14b 1px, transparent 0, transparent 50%),
-    repeating-linear-gradient(120deg, #4fc14b 0, #4fc14b 1px, transparent 0, transparent 50%);
-  background-size: 40px 70px;
-}
+/* ── FINAL ── */
+.final { background: var(--verde-dark); text-align: center; padding: 7rem 2rem; position: relative; overflow: hidden; }
+.final-p { position: absolute; inset: 0; opacity: 0.06; background-image: repeating-linear-gradient(60deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%), repeating-linear-gradient(120deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%); background-size: 40px 70px; }
 .final .container { position: relative; }
 .final h2 { font-size: clamp(2rem, 4vw, 3rem); color: #fff; margin-bottom: 1rem; letter-spacing: -0.02em; }
-.final p { color: rgba(255,255,255,0.5); max-width: 520px; margin-inline: auto; margin-bottom: 2.5rem; font-weight: 300; }
+.final p { color: rgba(255,255,255,0.45); max-width: 520px; margin-inline: auto; margin-bottom: 2.5rem; font-weight: 300; }
 
 /* ── FOOTER ── */
-footer {
-  background: var(--preto); padding: 2.5rem 2rem;
-  text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.3);
-}
+footer { background: var(--preto); padding: 2.5rem 2rem; text-align: center; font-size: 0.76rem; color: rgba(255,255,255,0.25); }
 footer p + p { margin-top: 0.5rem; }
 
 /* ── ANIM ── */
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 .hero-text { animation: fadeUp 0.7s ease both; }
 .hero-cards { animation: fadeUp 0.7s 0.15s ease both; }
-@keyframes glow { 0%,100%{box-shadow:0 6px 28px rgba(79,193,75,0.3)} 50%{box-shadow:0 10px 44px rgba(79,193,75,0.55)} }
+@keyframes glow { 0%,100%{box-shadow:0 6px 28px rgba(79,193,75,0.3)} 50%{box-shadow:0 10px 44px rgba(79,193,75,0.58)} }
 .btn-primary { animation: glow 3s ease-in-out infinite; }
 .btn-primary:hover { animation: none; }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 760px) {
-  .hero-inner, .proximo-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+@media (max-width: 768px) {
+  .hero-inner, .valor-inner, .proximo-inner, .bonus-destaque { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero-cards { order: -1; }
   .hcard:nth-child(2) { transform: none; }
-  nav { padding: 1rem 1.25rem; }
-  .step:not(:last-child)::after { display: none; }
+  nav { padding: 0.85rem 1.25rem; }
+  .nav-logo { font-size: 0.78rem; max-width: 200px; }
 }
 </style>
 </head>
@@ -367,8 +330,8 @@ footer p + p { margin-top: 0.5rem; }
 
 <!-- NAV -->
 <nav>
-  <span class="nav-logo">🛒 Mini Mercado Autônomo</span>
-  <a href="#cta" class="nav-cta">Quero Aprender →</a>
+  <span class="nav-logo">🛒 Guia Completo para Montar o Seu e Começar a Faturar 24h</span>
+  <a href="https://hotm.io/ASkqwik?utm_source=lp&utm_medium=nav&utm_campaign=curso-minimercado&utm_content=btn-nav" target="_blank" class="nav-cta">Quero Começar →</a>
 </nav>
 
 <!-- HERO -->
@@ -376,45 +339,261 @@ footer p + p { margin-top: 0.5rem; }
   <div class="hero-pattern"></div>
   <div class="hero-inner container">
     <div class="hero-text">
-      <div class="hero-badge">📚 Curso completo disponível na Hotmart</div>
+      <div class="hero-eyebrow">📍 Criado por quem opera na prática — desde a pandemia</div>
       <h1>
         Entenda o negócio de<br>
         <em>Mini Mercado Autônomo</em><br>
-        antes de investir um real
+        com quem vive isso todos os dias
       </h1>
-      <p class="hero-sub">
-        Um guia completo e prático para quem quer descobrir se esse modelo de negócio é para você. Do planejamento à operação do dia a dia.
-      </p>
-      <a href="SUA_URL_HOTMART" id="cta" target="_blank" class="btn-primary">
-        📖 Quero Conhecer o Negócio Agora
-      </a>
-      <p class="hero-note">✓ Acesso imediato via Hotmart · ✓ Conteúdo baseado em operações reais</p>
+      <div class="hero-quem">
+        <div class="hero-quem-dot"></div>
+        <p>Este curso foi montado por <strong>operadores reais</strong> que transformaram o mini mercado autônomo em sua <strong>principal fonte de renda</strong> — e estão abrindo o jogo, sem filtro, para quem quer entrar no segmento com o pé direito.</p>
+      </div>
+      <p class="hero-sub">Da escolha do ponto à operação do dia a dia: tudo que você precisa saber antes de investir um real.</p>
+      <div class="hero-cta-stack">
+        <a href="https://hotm.io/ASkqwik?utm_source=lp&utm_medium=hero&utm_campaign=curso-minimercado&utm_content=btn-hero" target="_blank" class="btn-primary">
+          📖 Quero Acessar o Curso Agora
+        </a>
+        <span class="hero-note">✓ Acesso imediato · ✓ Material completo · ✓ 9 aulas + bônus exclusivos</span>
+      </div>
     </div>
 
     <div class="hero-cards">
+      <div class="hcard">
+        <div class="hcard-icon">🏪</div>
+        <div>
+          <div class="hcard-val">+20 mil</div>
+          <div class="hcard-lbl">Unidades ativas no Brasil</div>
+          <div class="hcard-sub">Segmento com crescimento de dois dígitos ao ano</div>
+        </div>
+      </div>
       <div class="hcard">
         <div class="hcard-icon">📈</div>
         <div>
           <div class="hcard-val">53,5%</div>
           <div class="hcard-lbl">Crescimento do setor em 2024</div>
-          <div class="hcard-sub">Fonte: APAS</div>
+          <div class="hcard-sub">Supermercados tradicionais recuaram 10,1% (APAS)</div>
         </div>
       </div>
       <div class="hcard">
-        <div class="hcard-icon">🏪</div>
-        <div>
-          <div class="hcard-val">+10 mil</div>
-          <div class="hcard-lbl">Unidades ativas no Brasil</div>
-          <div class="hcard-sub">Crescimento de dois dígitos ao ano desde 2020</div>
-        </div>
-      </div>
-      <div class="hcard">
-        <div class="hcard-icon">⚖️</div>
+        <div class="hcard-icon">🕐</div>
         <div>
           <div class="hcard-val">6–8h</div>
           <div class="hcard-lbl">Por semana para operar</div>
-          <div class="hcard-sub">Margem líquida estimada de 10% a 40%</div>
+          <div class="hcard-sub">Margem líquida estimada entre 10% e 40%</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANCORAGEM DE VALOR -->
+<section class="valor">
+  <div class="valor-inner container">
+    <div class="valor-text">
+      <span class="section-pill">Por que esse curso vale muito mais</span>
+      <h2 class="section-title">No mercado, <em>esse conteúdo custaria mais de R$10.000</em></h2>
+      <p>Consultorias especializadas em varejo autônomo cobram entre R$5.000 e R$15.000 para entregar um diagnóstico de negócio, projeto arquitetônico, business plan e suporte operacional.</p>
+      <p>Aqui você acessa o mesmo nível de conhecimento — estruturado por quem já está no campo há anos — por uma fração desse valor. Não porque é simples. Porque acreditamos que informação de qualidade não precisa ter preço de consultoria.</p>
+      <p><strong>O que entregamos é o modelo do sucesso, destilado em 9 aulas diretas ao ponto, com materiais práticos que você aplica imediatamente.</strong></p>
+    </div>
+    <div class="valor-box">
+      <div class="valor-box-inner">
+        <div class="vb-old">De R$ 10.000+ em consultoria</div>
+        <div class="vb-price">R$ 497</div>
+        <div class="vb-or">— ou —</div>
+        <div class="vb-parcel">12× de R$ 51,40 no cartão</div>
+        <div class="vb-note">* sem juros nas parcelas</div>
+        <a href="https://hotm.io/ASkqwik?utm_source=lp&utm_medium=preco&utm_campaign=curso-minimercado&utm_content=btn-valor" target="_blank" class="btn-primary vb-cta">
+          Garantir Meu Acesso Agora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILIDADE -->
+<section class="credibilidade">
+  <div class="cred-pattern"></div>
+  <div class="container cred-inner">
+    <span class="section-pill" style="background:rgba(79,193,75,0.15);color:var(--verde-vivo)">Quem está por trás do curso</span>
+    <h2 class="section-title" style="color:#fff;max-width:640px">Operadores reais. Conhecimento de quem faz, não de quem teoriza.</h2>
+    <div class="cred-grid">
+      <div class="cred-item">
+        <div class="cred-val">+<span>20</span>mil</div>
+        <div class="cred-lbl">Unidades ativas no segmento no Brasil</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-val"><span>5</span>anos</div>
+        <div class="cred-lbl">Operando desde a pandemia, no campo todos os dias</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-val">R$<span>2</span>bi</div>
+        <div class="cred-lbl">Movimentados por ano no setor</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-val"><span>56</span>+</div>
+        <div class="cred-lbl">Pontos na base que gerou os dados do curso</div>
+      </div>
+    </div>
+    <div class="cred-quote">
+      "O primeiro passo é entender o negócio com quem já vive isso todos os dias e está <strong>abrindo o jogo sem filtro</strong>. Não é teoria. É o que funciona na prática, testado em dezenas de operações reais — incluindo os erros que ninguém te conta."
+    </div>
+  </div>
+</section>
+
+<!-- AULAS -->
+<section class="aulas">
+  <div class="container">
+    <span class="section-pill">As 9 Aulas do Curso</span>
+    <h2 class="section-title">Conteúdo direto ao ponto, baseado em operação real</h2>
+    <p class="section-sub">Sem enrolação, sem papo de coach. Cada aula foi gravada por quem toca minimercado autônomo como negócio principal.</p>
+
+    <div class="aulas-grid">
+
+      <div class="aula-row">
+        <div class="aula-num">01</div>
+        <div class="aula-content">
+          <div class="aula-title">Dia a dia de um empresário de mini mercado autônomo</div>
+          <div class="aula-desc">Como é a rotina real de quem vive do negócio: o que você faz, quanto tempo leva, o que olha no dashboard e como a operação funciona sem que você precise estar presente 24h.</div>
+        </div>
+      </div>
+
+      <div class="aula-row">
+        <div class="aula-num">02</div>
+        <div class="aula-content">
+          <div class="aula-title">Por que ter um plano de negócio</div>
+          <div class="aula-desc">A diferença entre quem quebra no primeiro ano e quem escala para várias unidades está aqui. Você vai entender como montar um Business Plan real, com projeções de faturamento, estrutura de custos e estimativa de payback.</div>
+          <div class="aula-material">📄 Material auxiliar incluso — Business Plan</div>
+        </div>
+      </div>
+
+      <div class="aula-row">
+        <div class="aula-num">03</div>
+        <div class="aula-content">
+          <div class="aula-title">Projeto arquitetônico</div>
+          <div class="aula-desc">Layout de gôndolas que aumenta o ticket médio, posicionamento estratégico de câmeras, infraestrutura elétrica e tudo que você precisa saber para montar uma loja que funciona de verdade — sem retrabalho caro.</div>
+          <div class="aula-material">📄 Material auxiliar incluso — Projeto Arquitetônico</div>
+        </div>
+      </div>
+
+      <div class="aula-row">
+        <div class="aula-num">04</div>
+        <div class="aula-content">
+          <div class="aula-title">Renda extra não combina com logística bem feita</div>
+          <div class="aula-desc">Um dos maiores erros de quem entra no mercado: tratar o mini mercado como renda secundária e descuidar da operação. Aqui você entende por que a logística precisa ser levada a sério — e como estruturá-la mesmo com pouco tempo disponível.</div>
+        </div>
+      </div>
+
+      <div class="aula-row">
+        <div class="aula-num">05</div>
+        <div class="aula-content">
+          <div class="aula-title">Estrutura da loja</div>
+          <div class="aula-desc">Análise técnica do espaço, planejamento elétrico, montagem de equipamentos, configuração do sistema de pagamento e a revisão completa antes da abertura. Tudo com checklist incluso.</div>
+          <div class="aula-material">📄 Material auxiliar incluso — Check-list de Estruturação</div>
+        </div>
+      </div>
+
+      <div class="aula-row">
+        <div class="aula-num">06</div>
+        <div class="aula-content">
+          <div class="aula-title">Reabastecimento na prática</div>
+          <div class="aula-desc">Fluxo operacional completo: como extrair a lista de compras do sistema, comprar no atacado de forma estratégica, abastecer usando o método FIFO e nunca deixar produto âncora faltar na gôndola.</div>
+          <div class="aula-material">📄 Material auxiliar incluso — Reabastecimento e Operação</div>
+        </div>
+      </div>
+
+      <div class="aula-row">
+        <div class="aula-num">07</div>
+        <div class="aula-content">
+          <div class="aula-title">Como empreender no modelo de mini mercado autônomo</div>
+          <div class="aula-desc">A visão completa do negócio: como prospectar condomínios, negociar com síndicos, fechar contratos com cláusulas de exclusividade e estruturar uma operação que pode escalar para múltiplas unidades.</div>
+          <div class="aula-material">📄 Material auxiliar incluso — Guia de Condomínios</div>
+        </div>
+      </div>
+
+      <div class="aula-row">
+        <div class="aula-num">08</div>
+        <div class="aula-content">
+          <div class="aula-title">Quem domina o tempo domina o negócio</div>
+          <div class="aula-desc">Os indicadores que separam operações lucrativas de experiências frustrantes: faturamento, ticket médio, CMV, taxa de ruptura, margem por produto e controle de perdas. Aprenda a ler os números e agir sobre eles.</div>
+          <div class="aula-material">📄 Material auxiliar incluso — Indicadores e DRE</div>
+        </div>
+      </div>
+
+      <div class="aula-row">
+        <div class="aula-num">09</div>
+        <div class="aula-content">
+          <div class="aula-title">Perfis de empreendedores</div>
+          <div class="aula-desc">Qual é o seu perfil e qual modelo de entrada faz mais sentido para você? Nesta aula você entende as diferentes formas de começar, os perfis de operadores que têm mais sucesso e o próximo passo ideal para a sua realidade.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BÔNUS -->
+<section class="bonus">
+  <div class="container">
+    <span class="section-pill">Bônus Exclusivos</span>
+    <h2 class="section-title">Materiais que valem o curso por si só</h2>
+    <p class="section-sub">Além das 9 aulas, você recebe esses materiais práticos para aplicar imediatamente.</p>
+
+    <!-- DESTAQUE: E-BOOK -->
+    <div class="bonus-destaque">
+      <div class="bonus-destaque-text">
+        <span class="bonus-destaque-tag">⭐ Principal Bônus</span>
+        <h3>E-book: Guia Definitivo de Minimercados Autônomos</h3>
+        <p>Um e-book de 29 páginas produzido por operadores ativos — o documento que resume anos de prática em campo. Cobre tecnologia, seleção de fornecedores, gestão financeira, marketing, experiência do cliente, métricas de sucesso e muito mais.</p>
+        <p style="margin-top:0.75rem">É o material que consultores cobrariam R$3.000 para te entregar. Você recebe incluso no curso.</p>
+      </div>
+      <div class="bonus-destaque-stats">
+        <div class="bd-stat">
+          <div class="bd-stat-icon">📄</div>
+          <div>
+            <div class="bd-stat-val">29 páginas</div>
+            <div class="bd-stat-lbl">De conteúdo técnico e prático</div>
+          </div>
+        </div>
+        <div class="bd-stat">
+          <div class="bd-stat-icon">🏪</div>
+          <div>
+            <div class="bd-stat-val">10 capítulos</div>
+            <div class="bd-stat-lbl">Do planejamento ao monitoramento</div>
+          </div>
+        </div>
+        <div class="bd-stat">
+          <div class="bd-stat-icon">📊</div>
+          <div>
+            <div class="bd-stat-val">100% prático</div>
+            <div class="bd-stat-lbl">Baseado em operações reais</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTROS BÔNUS -->
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <span class="bonus-tag">Bônus 2</span>
+        <h4>Planilha DRE do Minimercado</h4>
+        <p>Controle completo de CMV, margem líquida, custos fixos e variáveis em Excel. Veja o resultado real da operação mês a mês e tome decisões com base em números.</p>
+      </div>
+      <div class="bonus-card">
+        <span class="bonus-tag">Bônus 3</span>
+        <h4>Curva ABC + Top 10 Produtos</h4>
+        <p>Os 10 produtos mais vendidos em 56+ pontos ativos com mais de R$500k/mês de faturamento. Comece com o mix certo e nunca deixe os itens âncora faltarem.</p>
+      </div>
+      <div class="bonus-card">
+        <span class="bonus-tag">Bônus 4</span>
+        <h4>Guia Completo — Condomínios</h4>
+        <p>Como prospectar, abordar síndicos, estruturar proposta comercial e fechar contratos sólidos com cláusulas de exclusividade que protegem seu investimento.</p>
+      </div>
+      <div class="bonus-card">
+        <span class="bonus-tag">Bônus 5</span>
+        <h4>Protocolo de Limpeza e Operação</h4>
+        <p>Rotina operacional completa com checklist de limpeza semanal, organização de prateleiras e como identificar produtos com baixo giro antes de perder dinheiro.</p>
       </div>
     </div>
   </div>
@@ -425,228 +604,80 @@ footer p + p { margin-top: 0.5rem; }
   <div class="container">
     <span class="section-pill">Para Quem é Esse Curso</span>
     <h2 class="section-title">Você está em alguma dessas situações?</h2>
-    <p class="section-sub">Se sim, esse curso foi feito para responder exatamente as perguntas que você está se fazendo.</p>
-
+    <p class="section-sub">O curso foi desenhado para responder exatamente as perguntas que estão na sua cabeça agora.</p>
     <div class="pq-grid">
       <div class="pq-card">
-        <div class="pq-card-icon">🤔</div>
+        <div class="pq-icon">🤔</div>
         <h3>"Ouvi falar no negócio mas não sei como funciona na prática"</h3>
-        <p>O curso mostra todo o ciclo operacional: do primeiro contato com o condomínio até a gestão financeira do dia a dia.</p>
+        <p>A aula 1 mostra o dia a dia real de um operador — sem enfeite, sem teoria, com a câmera apontada para o que acontece de verdade.</p>
       </div>
       <div class="pq-card">
-        <div class="pq-card-icon">💰</div>
-        <h3>"Quero entender quanto custa e qual é o retorno real"</h3>
-        <p>Business Plan completo com estimativas de investimento inicial, projeção de faturamento e payback baseado em operações reais.</p>
+        <div class="pq-icon">💰</div>
+        <h3>"Quero saber quanto custa e qual é o retorno real"</h3>
+        <p>Business Plan completo com investimento inicial, projeção de faturamento e payback baseado em dados de operações reais — não em planilha de sonho.</p>
       </div>
       <div class="pq-card">
-        <div class="pq-card-icon">🏗️</div>
+        <div class="pq-icon">⚙️</div>
         <h3>"Não sei por onde começar para estruturar uma operação"</h3>
-        <p>Checklist de estruturação, projeto arquitetônico, planejamento elétrico e configuração de sistema — passo a passo.</p>
+        <p>Checklist de estruturação, projeto arquitetônico, planejamento elétrico, configuração do sistema — você sai do zero com um roteiro completo na mão.</p>
       </div>
       <div class="pq-card">
-        <div class="pq-card-icon">📊</div>
-        <h3>"Preciso de dados reais antes de tomar uma decisão"</h3>
-        <p>Dados de mercado, Curva ABC dos produtos mais vendidos em 56+ pontos ativos, DRE e indicadores que operações profissionais usam.</p>
+        <div class="pq-icon">📊</div>
+        <h3>"Preciso de dados reais para tomar uma decisão"</h3>
+        <p>Curva ABC com os produtos mais vendidos em 56+ pontos ativos, DRE e todos os indicadores que operadores profissionais monitoram todo mês.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- O QUE VOCÊ VAI APRENDER -->
-<section class="aprender">
+<!-- CTA CENTRAL -->
+<section class="cta-section" id="cta">
+  <div class="cta-section-p"></div>
   <div class="container">
-    <span class="section-pill">Conteúdo do Curso</span>
-    <h2 class="section-title">Tudo que você precisa saber antes de começar</h2>
-    <p class="section-sub">Cada módulo foi criado a partir de operações reais. Nada de teoria genérica ou conteúdo raso.</p>
+    <span class="section-pill" style="background:rgba(79,193,75,0.15);color:var(--verde-vivo)">Acesso Imediato</span>
+    <h2>O modelo do sucesso por uma fração do que custaria aprender na marra</h2>
+    <p class="sub">9 aulas + 5 bônus exclusivos. Conhecimento de operador real. Materiais práticos que você aplica no dia seguinte.</p>
 
-    <div class="mod-grid">
-      <div class="mod-card">
-        <div class="mod-icon">🗺️</div>
-        <span class="mod-num">Módulo 1</span>
-        <h3>O Mercado e a Oportunidade</h3>
-        <p>Contexto do setor, como funciona o modelo autônomo na prática, vantagens operacionais e tendências que moldam o segmento.</p>
-      </div>
-      <div class="mod-card">
-        <div class="mod-icon">📊</div>
-        <span class="mod-num">Módulo 2</span>
-        <h3>Business Plan Completo</h3>
-        <p>Estrutura de custos, projeção de faturamento, margem líquida estimada entre 10% e 40% e payback entre 10 e 26 meses.</p>
-      </div>
-      <div class="mod-card">
-        <div class="mod-icon">🏗️</div>
-        <span class="mod-num">Módulo 3</span>
-        <h3>Projeto Arquitetônico</h3>
-        <p>Layout de gôndolas que aumenta o ticket médio, posicionamento de câmeras, infraestrutura elétrica e normas sanitárias.</p>
-      </div>
-      <div class="mod-card">
-        <div class="mod-icon">🤝</div>
-        <span class="mod-num">Módulo 4</span>
-        <h3>Prospecção e Contratos</h3>
-        <p>Como encontrar condomínios, abordar síndicos, montar uma proposta comercial e fechar contratos que protegem seu investimento.</p>
-      </div>
-      <div class="mod-card">
-        <div class="mod-icon">✅</div>
-        <span class="mod-num">Módulo 5</span>
-        <h3>Check-list de Estruturação</h3>
-        <p>Análise técnica do espaço, montagem de equipamentos, configuração do sistema de pagamento e revisão final antes da abertura.</p>
-      </div>
-      <div class="mod-card">
-        <div class="mod-icon">🔄</div>
-        <span class="mod-num">Módulo 6</span>
-        <h3>Reabastecimento e Operação</h3>
-        <p>Fluxo operacional semanal, método FIFO, como comprar estrategicamente no atacado e evitar ruptura de estoque.</p>
-      </div>
-      <div class="mod-card">
-        <div class="mod-icon">📉</div>
-        <span class="mod-num">Módulo 7</span>
-        <h3>DRE e Indicadores Financeiros</h3>
-        <p>CMV, margem de lucro, ticket médio, taxa de ruptura e fluxo de caixa. Aprenda a ler os números da sua operação com clareza.</p>
-      </div>
-      <div class="mod-card">
-        <div class="mod-icon">🧹</div>
-        <span class="mod-num">Módulo 8</span>
-        <h3>Operação e Limpeza</h3>
-        <p>Protocolo de limpeza semanal, organização de prateleiras e como identificar produtos com baixo giro antes de perder dinheiro.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- NÚMEROS -->
-<section class="numeros">
-  <div class="numeros-pattern"></div>
-  <div class="container numeros-inner">
-    <span class="section-pill" style="background:rgba(79,193,75,0.15);color:var(--verde-vivo)">O Mercado em Números</span>
-    <h2 class="section-title" style="color:#fff; max-width:560px">Um segmento em franca expansão no Brasil</h2>
-    <div class="num-grid">
-      <div class="num-item">
-        <div class="num-val"><span>53,5</span>%</div>
-        <div class="num-lbl">Crescimento do setor em 2024 (APAS)</div>
-      </div>
-      <div class="num-item">
-        <div class="num-val">R$<span>2</span>bi</div>
-        <div class="num-lbl">Movimentados por ano no segmento</div>
-      </div>
-      <div class="num-item">
-        <div class="num-val"><span>10</span>mil</div>
-        <div class="num-lbl">Unidades ativas no Brasil</div>
-      </div>
-      <div class="num-item">
-        <div class="num-val"><span>60</span>%</div>
-        <div class="num-lbl">Dos brasileiros preferem lojas com automação (PwC)</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BÔNUS -->
-<section class="bonus">
-  <div class="container">
-    <span class="section-pill">Materiais Extras</span>
-    <h2 class="section-title">Bônus incluídos no curso</h2>
-    <p class="section-sub">Materiais práticos que você começa a usar antes mesmo de abrir uma operação.</p>
-    <div class="bonus-grid">
-      <div class="bonus-card">
-        <span class="bonus-tag">Bônus 1</span>
-        <h4>Guia Definitivo de Minimercado Autônomo</h4>
-        <p>E-book de 29 páginas cobrindo tecnologia, fornecedores, gestão financeira, marketing e indicadores.</p>
-      </div>
-      <div class="bonus-card">
-        <span class="bonus-tag">Bônus 2</span>
-        <h4>Guia Completo — Condomínios</h4>
-        <p>Como prospectar, abordar síndicos, estruturar proposta e fechar contratos sólidos com cláusulas de exclusividade.</p>
-      </div>
-      <div class="bonus-card">
-        <span class="bonus-tag">Bônus 3</span>
-        <h4>Planilha DRE do Minimercado</h4>
-        <p>Controle de CMV, margem líquida e custos em Excel. Veja o resultado real da sua operação mês a mês.</p>
-      </div>
-      <div class="bonus-card">
-        <span class="bonus-tag">Bônus 4</span>
-        <h4>Curva ABC + Top 10 Produtos</h4>
-        <p>Os 10 produtos mais vendidos extraídos de 56+ pontos ativos com mais de R$500k/mês de faturamento.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COMO FUNCIONA -->
-<section class="como">
-  <div class="container">
-    <span class="section-pill">Como Funciona</span>
-    <h2 class="section-title">Da dúvida à decisão informada</h2>
-    <p class="section-sub">O curso foi desenhado para te levar do "não sei nada sobre isso" até "sei exatamente o que fazer" em etapas claras.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Acesse o curso</h3>
-        <p>Compre na Hotmart e tenha acesso imediato a todo o conteúdo.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Aprenda o modelo</h3>
-        <p>Siga os módulos na ordem e absorva o planejamento completo do negócio.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Aplique os materiais</h3>
-        <p>Use o Business Plan, a planilha de DRE e os checklists na sua análise de viabilidade.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <h3>Tome sua decisão</h3>
-        <p>Com conhecimento real, decida com confiança o seu próximo passo no negócio.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA PRINCIPAL -->
-<section class="cta-mid" id="cta">
-  <div class="cta-mid-pattern"></div>
-  <div class="container" style="text-align:center">
-    <span class="section-pill" style="background:rgba(79,193,75,0.15);color:var(--verde-vivo)">Investimento</span>
-    <h2>Conhecimento que pode mudar sua decisão</h2>
-    <p>Acesso a todos os módulos, bônus e materiais práticos por uma única vez.</p>
-
-    <div class="price-wrap">
-      <span class="price-label">Investimento único</span>
-      <span class="price-val">R$ ---</span>
-      <span class="price-desc">ou em até X× sem juros</span>
+    <div class="price-box">
+      <div class="price-old">De R$10.000+ em consultoria especializada</div>
+      <div class="price-val">R$ 497</div>
+      <div class="price-or">— ou —</div>
+      <div class="price-parc">12× de R$ 51,40 no cartão</div>
+      <div class="price-note">* sem juros nas parcelas</div>
     </div>
 
     <br>
-    <a href="SUA_URL_HOTMART" target="_blank" class="btn-primary" style="font-size:1.1rem;padding:1.2rem 3rem">
-      📖 Quero Acessar o Curso Agora
+    <a href="https://hotm.io/ASkqwik?utm_source=lp&utm_medium=cta&utm_campaign=curso-minimercado&utm_content=btn-cta-central" target="_blank" class="btn-primary" style="font-size:1.1rem;padding:1.2rem 3rem">
+      📖 Garantir Meu Acesso Agora
     </a>
 
-    <div class="garantias">
-      <div class="garantia">🔒 Pagamento seguro via Hotmart</div>
-      <div class="garantia">⚡ Acesso imediato ao conteúdo</div>
-      <div class="garantia">📱 Assista em qualquer dispositivo</div>
+    <div class="gtags">
+      <div class="gtag">⚡ Acesso imediato após a compra</div>
+      <div class="gtag">📱 Assista em qualquer dispositivo</div>
+      <div class="gtag">🔒 Pagamento 100% seguro</div>
     </div>
   </div>
 </section>
 
-<!-- PRÓXIMO PASSO (funil para franquia) -->
+<!-- PRÓXIMO NÍVEL -->
 <section class="proximo">
   <div class="container">
     <div class="proximo-inner">
       <div class="proximo-text">
         <span class="section-pill">Quer ir além?</span>
-        <h2 class="section-title">Para quem quer uma operação já estruturada</h2>
-        <p>O curso é o ponto de partida. Quem completa o conteúdo e decide avançar com uma operação já validada, com suporte e estrutura completa, tem um caminho ainda mais acelerado disponível.</p>
-        <p>Ao concluir o curso, você vai entender exatamente o que avaliar — e saberá reconhecer quando uma oportunidade de parceria faz sentido para o seu perfil.</p>
+        <h2 class="section-title">Para quem quer uma operação já validada e estruturada</h2>
+        <p>O curso é o ponto de partida ideal. Quem conclui o conteúdo e decide avançar com uma operação que já tem marca, projeto, suporte e tecnologia prontos, tem um caminho muito mais rápido disponível.</p>
+        <p>Ao concluir o curso, você vai entender exatamente o que avaliar — e vai saber reconhecer quando uma oportunidade de parceria faz sentido para o seu perfil e capital.</p>
       </div>
       <div class="proximo-box">
         <h3>O que uma operação estruturada oferece</h3>
         <ul class="prox-list">
-          <li class="prox-item"><span class="prox-check">✓</span>Marca, identidade visual e brandbook já desenvolvidos</li>
+          <li class="prox-item"><span class="prox-check">✓</span>Marca, identidade visual e brandbook desenvolvidos e testados</li>
           <li class="prox-item"><span class="prox-check">✓</span>Projeto arquitetônico validado em dezenas de pontos</li>
           <li class="prox-item"><span class="prox-check">✓</span>Suporte na prospecção e negociação com condomínios</li>
-          <li class="prox-item"><span class="prox-check">✓</span>Mix de produtos baseado em dados reais de venda</li>
-          <li class="prox-item"><span class="prox-check">✓</span>Treinamento e acompanhamento operacional</li>
-          <li class="prox-item"><span class="prox-check">✓</span>Tecnologia integrada desde o primeiro dia</li>
+          <li class="prox-item"><span class="prox-check">✓</span>Mix de produtos baseado em dados reais de vendas</li>
+          <li class="prox-item"><span class="prox-check">✓</span>Treinamento e acompanhamento operacional contínuo</li>
+          <li class="prox-item"><span class="prox-check">✓</span>Tecnologia integrada e configurada desde o primeiro dia</li>
         </ul>
       </div>
     </div>
@@ -657,7 +688,7 @@ footer p + p { margin-top: 0.5rem; }
 <section class="faq">
   <div class="container">
     <span class="section-pill">Dúvidas Frequentes</span>
-    <h2 class="section-title">Respostas para as perguntas mais comuns</h2>
+    <h2 class="section-title">Respostas diretas para as perguntas mais comuns</h2>
     <div class="faq-wrap">
 
       <div class="faq-item">
@@ -665,7 +696,7 @@ footer p + p { margin-top: 0.5rem; }
           Preciso de experiência no varejo para aproveitar o curso?
           <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">Não. O conteúdo foi criado para quem está descobrindo o modelo agora. Os módulos seguem uma progressão lógica: do básico ao operacional, com materiais práticos que você aplica ao longo do curso.</div>
+        <div class="faq-a">Não. O conteúdo foi criado para quem está descobrindo o modelo agora. Os módulos seguem uma progressão lógica — do entendimento do negócio ao operacional — com materiais práticos que você aplica ao longo do curso, mesmo sem nenhum histórico no setor.</div>
       </div>
 
       <div class="faq-item">
@@ -673,31 +704,31 @@ footer p + p { margin-top: 0.5rem; }
           O curso mostra quanto devo investir para montar um minimercado?
           <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">Sim. O Business Plan do curso apresenta estimativas reais: investimento inicial entre R$25.000 e R$100.000 dependendo do porte, com projeção de payback entre 10 e 26 meses. Os valores variam conforme localização, mix de produtos e tecnologia escolhida.</div>
+        <div class="faq-a">Sim, com dados reais. O Business Plan do curso apresenta estimativas baseadas em operações em andamento: investimento inicial entre R$25.000 e R$100.000 dependendo do porte, com projeção de payback entre 10 e 26 meses. Você entende cada linha do custo — sem surpresas depois.</div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          O curso serve para quem pensa em montar de forma independente?
+          Quem criou esse curso? São professores ou operadores?
           <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">Com certeza. O conteúdo cobre todos os aspectos do negócio de forma independente: estrutura jurídica, contratos com condomínios, gestão de estoque, tecnologia e operação diária. Você sai do curso com base suficiente para avaliar qualquer caminho que queira seguir.</div>
+        <div class="faq-a">Operadores. O curso foi montado por quem está no campo desde a pandemia e faz do mini mercado autônomo a principal fonte de renda. Nada de conteúdo criado por quem só estudou o mercado de fora. Cada aula é o que funciona na prática — incluindo os erros que costumam ser omitidos.</div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          Posso instalar em locais além de condomínios residenciais?
+          Posso instalar em locais além de condomínios?
           <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">Sim. O curso cobre cinco segmentos: condomínios residenciais, prédios comerciais, academias, hospitais/clínicas e hotéis. Cada um tem sua dinâmica, potencial de público e ticket médio diferentes — tudo abordado com dados reais.</div>
+        <div class="faq-a">Sim. O conteúdo cobre cinco segmentos: condomínios residenciais, prédios comerciais, academias, hospitais e clínicas, e hotéis. Cada um tem sua dinâmica, perfil de público e ticket médio diferente — e o curso mostra como avaliar qual faz mais sentido para o seu caso.</div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
-          Por quanto tempo terei acesso ao conteúdo?
+          Esse conteúdo serve para quem já tem interesse em uma operação mais estruturada?
           <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a">O acesso é gerenciado pela plataforma Hotmart. Após a compra, o conteúdo fica disponível imediatamente e pode ser acessado no seu ritmo, em computador, celular ou tablet.</div>
+        <div class="faq-a">É exatamente para esse perfil. A aula 9 fala diretamente sobre perfis de empreendedores e qual modelo de entrada faz sentido para cada um. Quem conclui o curso entende claramente o que avaliar — inclusive quando uma operação já estruturada e uma parceria com quem já está no mercado é o caminho mais eficiente.</div>
       </div>
 
     </div>
@@ -705,21 +736,22 @@ footer p + p { margin-top: 0.5rem; }
 </section>
 
 <!-- FINAL CTA -->
-<section class="final" style="padding:7rem 2rem">
-  <div class="final-pattern"></div>
+<section class="final">
+  <div class="final-p"></div>
   <div class="container">
-    <h2>O primeiro passo é entender o negócio por dentro.</h2>
-    <p>Quem decide com conhecimento, decide melhor. Comece agora e veja se esse modelo faz sentido para você.</p>
-    <a href="SUA_URL_HOTMART" target="_blank" class="btn-primary" style="font-size:1.1rem;padding:1.2rem 3rem">
-      📖 Começar Agora — Acesso Imediato
+    <h2>O primeiro passo é entender o negócio com quem já vive isso.</h2>
+    <p>Operadores reais, abrindo o jogo sem filtro. O modelo do sucesso por R$497 — enquanto consultores cobrariam dez vezes mais.</p>
+    <a href="https://hotm.io/ASkqwik?utm_source=lp&utm_medium=final&utm_campaign=curso-minimercado&utm_content=btn-final" target="_blank" class="btn-primary" style="font-size:1.1rem;padding:1.2rem 3rem">
+      📖 Garantir Meu Acesso por R$497
     </a>
+    <p style="margin-top:1rem;font-size:0.76rem;color:rgba(255,255,255,0.25)">ou 12× de R$51,40 no cartão · acesso imediato após a compra</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2025 Curso Mini Mercado Autônomo · Disponível na plataforma Hotmart</p>
-  <p>Este produto é vendido com a intermediação da Hotmart. A marca Hotmart é de propriedade da Hotmart Company.</p>
+  <p>© 2025 Mini Mercado Autônomo — Guia Completo para Montar o Seu e Começar a Faturar 24h</p>
+  <p>Curso produzido por operadores ativos do segmento de minimercados autônomos no Brasil.</p>
 </footer>
 
 <script>
