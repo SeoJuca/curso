@@ -239,18 +239,46 @@ section { padding: 6rem 2rem; }
 .bonus-card h4 { font-size: 0.93rem; font-weight: 700; color: var(--preto); }
 .bonus-card p { font-size: 0.82rem; color: var(--cinza); line-height: 1.65; }
 
-/* ── PARA QUEM ── */
-.para-quem { background: var(--branco); }
-.pq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.1rem; margin-top: 3rem; }
-.pq-card {
-  background: var(--verde-bg2); border: 1.5px solid var(--verde-light);
-  border-radius: var(--radius); padding: 1.6rem;
-  transition: border-color 0.2s, transform 0.2s;
+/* ── VÍDEO ── */
+.video-section { background: var(--verde-dark); position: relative; overflow: hidden; }
+.video-pattern { position: absolute; inset: 0; opacity: 0.06; background-image: repeating-linear-gradient(60deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%), repeating-linear-gradient(120deg,#4fc14b 0,#4fc14b 1px,transparent 0,transparent 50%); background-size: 40px 70px; }
+.video-inner { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+.video-copy { }
+.video-copy h2 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-bottom: 1rem; line-height: 1.15; }
+.video-copy h2 em { color: var(--verde-vivo); font-style: normal; }
+.video-copy p { font-size: 0.97rem; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 1.5rem; font-weight: 300; }
+.video-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2rem; }
+.video-bullet { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.55; }
+.vbullet-icon { width: 22px; height: 22px; border-radius: 50%; background: rgba(79,193,75,0.2); border: 1px solid rgba(79,193,75,0.4); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--verde-vivo); flex-shrink: 0; margin-top: 1px; font-weight: 700; }
+.video-cta-note { font-size: 0.78rem; color: rgba(255,255,255,0.28); margin-top: 0.75rem; }
+
+.video-player-wrap {
+  width: 320px; flex-shrink: 0;
+  border-radius: var(--radius); overflow: hidden;
+  border: 2px solid rgba(79,193,75,0.25);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  position: relative;
+  background: #000;
 }
-.pq-card:hover { border-color: var(--verde-vivo); transform: translateY(-3px); }
-.pq-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-.pq-card h3 { font-size: 0.93rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--preto); }
-.pq-card p { font-size: 0.83rem; color: var(--cinza); line-height: 1.6; }
+.video-player-wrap::before {
+  content: ''; display: block; padding-top: 177.78%; /* 9:16 */
+}
+.video-player-wrap iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  border: none;
+}
+.video-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--verde-vivo); color: #fff;
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 0.3rem 1rem;
+  border-radius: 50px; white-space: nowrap; z-index: 2;
+}
+
+@media (max-width: 860px) {
+  .video-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .video-player-wrap { width: 100%; max-width: 360px; margin: 0 auto; }
+}
 
 /* ── PRÓXIMO NÍVEL ── */
 .proximo { background: var(--verde-bg2); border-top: 1px solid var(--verde-light); }
@@ -599,34 +627,52 @@ footer p + p { margin-top: 0.5rem; }
   </div>
 </section>
 
-<!-- PARA QUEM -->
-<section class="para-quem">
-  <div class="container">
-    <span class="section-pill">Para Quem é Esse Curso</span>
-    <h2 class="section-title">Você está em alguma dessas situações?</h2>
-    <p class="section-sub">O curso foi desenhado para responder exatamente as perguntas que estão na sua cabeça agora.</p>
-    <div class="pq-grid">
-      <div class="pq-card">
-        <div class="pq-icon">🤔</div>
-        <h3>"Ouvi falar no negócio mas não sei como funciona na prática"</h3>
-        <p>A aula 1 mostra o dia a dia real de um operador, sem enfeite, sem teoria, com a câmera apontada para o que acontece de verdade.</p>
-      </div>
-      <div class="pq-card">
-        <div class="pq-icon">💰</div>
-        <h3>"Quero saber quanto custa e qual é o retorno real"</h3>
-        <p>Business Plan completo com investimento inicial, projeção de faturamento e payback baseado em dados de operações reais, não em planilha de sonho.</p>
-      </div>
-      <div class="pq-card">
-        <div class="pq-icon">⚙️</div>
-        <h3>"Não sei por onde começar para estruturar uma operação"</h3>
-        <p>Checklist de estruturação, projeto arquitetônico, planejamento elétrico, configuração do sistema. Você sai do zero com um roteiro completo na mão.</p>
-      </div>
-      <div class="pq-card">
-        <div class="pq-icon">📊</div>
-        <h3>"Preciso de dados reais para tomar uma decisão"</h3>
-        <p>Curva ABC com os produtos mais vendidos em 56+ pontos ativos, DRE e todos os indicadores que operadores profissionais monitoram todo mês.</p>
+<!-- VÍDEO -->
+<section class="video-section" style="padding:6rem 2rem">
+  <div class="video-pattern"></div>
+  <div class="video-inner container">
+
+    <div class="video-copy">
+      <span class="section-pill" style="background:rgba(79,193,75,0.15);color:var(--verde-vivo)">Veja com seus próprios olhos</span>
+      <h2>Isso não é aula gravada num quarto.<br><em>É o negócio funcionando na sua frente.</em></h2>
+      <p>Antes de decidir qualquer coisa, assista. Em menos de 2 minutos você vai entender o que levaria meses para aprender tentando sozinho.</p>
+      <ul class="video-bullets">
+        <li class="video-bullet">
+          <span class="vbullet-icon">✓</span>
+          Operadores reais dentro de uma operação real — não estúdio, não slide, não teoria
+        </li>
+        <li class="video-bullet">
+          <span class="vbullet-icon">✓</span>
+          Você vai ver a loja por dentro: o layout, os produtos, a tecnologia, o caixa autônomo funcionando
+        </li>
+        <li class="video-bullet">
+          <span class="vbullet-icon">✓</span>
+          O mesmo ambiente que gerou os dados, os materiais e as aulas que estão nesse curso
+        </li>
+        <li class="video-bullet">
+          <span class="vbullet-icon">✓</span>
+          É isso que está abrindo o jogo pra você — sem filtro, sem enfeite
+        </li>
+      </ul>
+      <a href="https://hotm.io/ASkqwik?utm_source=lp&utm_medium=video&utm_campaign=curso-minimercado&utm_content=btn-video" target="_blank" class="btn-primary">
+        📖 Quero Acessar o Curso Agora
+      </a>
+      <p class="video-cta-note">R$497 à vista · 12× de R$51,40 no cartão · acesso imediato</p>
+    </div>
+
+    <div style="position:relative">
+      <div class="video-badge">▶ Assista agora</div>
+      <div class="video-player-wrap">
+        <!-- Troque XHOmBV4js_E pelo ID do seu vídeo final no YouTube -->
+        <iframe
+          src="https://www.youtube.com/embed/XHOmBV4js_E?rel=0&modestbranding=1&playsinline=1"
+          title="Mini Mercado Autônomo na prática"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
+
   </div>
 </section>
 
